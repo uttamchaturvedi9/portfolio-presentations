@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBOM & Vulnerability Scanning System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #3b82f6;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            animation: fadeIn 1s ease-out 0.7s backwards;
+        }
+
+        .tech-stack h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #60a5fa;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: default;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .tech-tag:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .impact-section {
+            margin-top: 60px;
+            text-align: center;
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        .impact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #60a5fa;
+        }
+
+        .impact-highlight {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            font-size: 1.2rem;
+            color: #86efac;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="hero-icon">🛡️</div>
+            <h1>SBOM & Security Vulnerability Scanning System</h1>
+            <p>Automated Enterprise-Grade Security Solution for .NET Applications</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">⚙️</span>
+                <h3>Automated SBOM Generation</h3>
+                <p>Developed comprehensive Software Bill of Materials generation solution with full automation capabilities.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔄</span>
+                <h3>CI/CD Pipeline Integration</h3>
+                <p>Seamlessly integrated PowerShell automation within Azure DevOps CI/CD pipelines for continuous security monitoring.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📦</span>
+                <h3>Weekly Dependency Scans</h3>
+                <p>Automated weekly scanning of all NuGet package dependencies across enterprise applications.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3>Severity Classification</h3>
+                <p>Identified and classified vulnerabilities by severity level with comprehensive HTML reports for stakeholder review.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">☁️</span>
+                <h3>Cloud-Based Archival</h3>
+                <p>Automated report archival to Azure Blob Storage ensuring long-term audit tracking and compliance.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">✅</span>
+                <h3>Continuous Compliance</h3>
+                <p>Eliminated manual security audits while ensuring continuous monitoring and compliance visibility.</p>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <h2>Key Technologies</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Azure DevOps</span>
+                <span class="tech-tag">PowerShell</span>
+                <span class="tech-tag">.NET</span>
+                <span class="tech-tag">NuGet</span>
+                <span class="tech-tag">Azure Blob Storage</span>
+            </div>
+        </div>
+
+        <div class="impact-section">
+            <h2>Business Impact</h2>
+            <div class="impact-highlight">
+                ✨ Eliminated manual security audits, saving hundreds of hours annually while ensuring continuous security monitoring and compliance visibility across all enterprise .NET applications.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
